@@ -7,6 +7,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
   Form,
   FormControl,
   FormField,
@@ -77,78 +84,80 @@ export function LoginForm() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">
+    <Card className="w-full max-w-md">
+      <CardHeader className="space-y-1 text-center">
+        <CardTitle className="text-2xl font-semibold tracking-tight">
           Welcome back
-        </h1>
-        <p className="text-sm text-muted-foreground">
+        </CardTitle>
+        <CardDescription>
           Enter your email to sign in to your account
-        </p>
-      </div>
-      {error && (
-        <Alert variant="destructive">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="m@example.com"
-                    type="email"
-                    disabled={isSubmitting}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="password"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Password</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter your password"
-                    type="password"
-                    disabled={isSubmitting}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Signing in...' : 'Sign in'}
-          </Button>
-        </form>
-      </Form>
-      <div className="text-center text-sm">
-        <p className="text-muted-foreground">
-          Don&apos;t have an account?{' '}
-          <Link
-            href="/auth/register"
-            className="text-primary hover:underline"
-          >
-            Sign up
-          </Link>
-        </p>
-      </div>
-    </div>
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {error && (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="m@example.com"
+                      type="email"
+                      disabled={isSubmitting}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter your password"
+                      type="password"
+                      disabled={isSubmitting}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? 'Signing in...' : 'Sign in'}
+            </Button>
+          </form>
+        </Form>
+        <div className="text-center text-sm">
+          <p className="text-muted-foreground">
+            Don&apos;t have an account?{' '}
+            <Link
+              href="/auth/register"
+              className="text-primary hover:underline"
+            >
+              Sign up
+            </Link>
+          </p>
+        </div>
+      </CardContent>
+    </Card>
   );
 }

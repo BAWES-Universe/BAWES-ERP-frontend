@@ -7,6 +7,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Button } from '@/components/ui/button';
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import {
   Form,
   FormControl,
   FormField,
@@ -54,59 +61,61 @@ export function VerifyEmailForm() {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="space-y-2 text-center">
-        <h1 className="text-2xl font-semibold tracking-tight">
+    <Card className="w-full max-w-md mx-auto">
+      <CardHeader className="space-y-1 text-center">
+        <CardTitle className="text-2xl font-semibold tracking-tight">
           Verify your email
-        </h1>
-        <p className="text-sm text-muted-foreground">
+        </CardTitle>
+        <CardDescription>
           Enter the verification code sent to your email
-        </p>
-      </div>
-      {error && (
-        <Alert variant="destructive">
-          <AlertDescription>{error}</AlertDescription>
-        </Alert>
-      )}
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-          <FormField
-            control={form.control}
-            name="token"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Verification Code</FormLabel>
-                <FormControl>
-                  <Input
-                    placeholder="Enter verification code"
-                    disabled={isLoading}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            className="w-full"
-            disabled={isLoading}
-          >
-            {isLoading ? 'Verifying...' : 'Verify Email'}
-          </Button>
-        </form>
-      </Form>
-      <div className="text-center text-sm">
-        <p className="text-muted-foreground">
-          Didn&apos;t receive the code?{' '}
-          <Link
-            href="/auth/login"
-            className="text-primary hover:underline"
-          >
-            Try signing in again
-          </Link>
-        </p>
-      </div>
-    </div>
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        {error && (
+          <Alert variant="destructive">
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="token"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Verification Code</FormLabel>
+                  <FormControl>
+                    <Input
+                      placeholder="Enter verification code"
+                      disabled={isLoading}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? 'Verifying...' : 'Verify Email'}
+            </Button>
+          </form>
+        </Form>
+        <div className="text-center text-sm">
+          <p className="text-muted-foreground">
+            Didn&apos;t receive the code?{' '}
+            <Link
+              href="/auth/login"
+              className="text-primary hover:underline"
+            >
+              Try signing in again
+            </Link>
+          </p>
+        </div>
+      </CardContent>
+    </Card>
   );
 } 
