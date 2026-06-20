@@ -18,6 +18,7 @@ import { Input } from '@/components/ui/input';
 import { useAuth } from '@/hooks';
 import { useState, useEffect } from 'react';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { LoadingSpinner } from '@/components/shared';
 import Link from 'next/link';
 
 const loginSchema = z.object({
@@ -65,7 +66,7 @@ export function LoginForm() {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-[200px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <LoadingSpinner size="lg" />
       </div>
     );
   }
