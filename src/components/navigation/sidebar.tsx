@@ -40,7 +40,7 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <aside
       className={cn(
-        'fixed left-0 top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-60 flex-col border-r bg-background lg:flex',
+        'fixed left-0 top-14 z-30 hidden h-[calc(100vh-3.5rem)] w-60 flex-col border-r bg-slack-sidebar lg:flex',
         className
       )}
     >
