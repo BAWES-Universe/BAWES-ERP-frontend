@@ -1,5 +1,12 @@
 import React from 'react';
 import { Metadata } from 'next';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 
 export const metadata: Metadata = {
   title: 'Settings',
@@ -18,24 +25,33 @@ export default function SettingsPage() {
         </div>
       </div>
       <div className="grid gap-6">
-        <div className="space-y-4">
-          <div className="rounded-lg border p-4">
-            <h3 className="text-lg font-medium">Profile Settings</h3>
+        <Card>
+          <CardHeader>
+            <CardTitle>Profile Settings</CardTitle>
+            <CardDescription>Manage your personal information and profile details</CardDescription>
+          </CardHeader>
+          <CardContent>
             {/* Add profile settings form here */}
-          </div>
-        </div>
-        <div className="space-y-4">
-          <div className="rounded-lg border p-4">
-            <h3 className="text-lg font-medium">Appearance</h3>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Appearance</CardTitle>
+            <CardDescription>Customize the look and feel of your workspace</CardDescription>
+          </CardHeader>
+          <CardContent>
             {/* Add theme settings here */}
-          </div>
-        </div>
-        <div className="space-y-4">
-          <div className="rounded-lg border p-4">
-            <h3 className="text-lg font-medium">Notifications</h3>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle>Notifications</CardTitle>
+            <CardDescription>Configure how and when you receive notifications</CardDescription>
+          </CardHeader>
+          <CardContent>
             {/* Add notification settings here */}
-          </div>
-        </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
