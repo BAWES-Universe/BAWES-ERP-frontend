@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 interface MainNavProps {
@@ -32,21 +32,25 @@ export function MainNav({ className }: MainNavProps) {
   ];
 
   return (
-    <nav className={cn('flex items-center space-x-4 lg:space-x-6', className)}>
-      {links.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className={cn(
-            'text-sm font-medium transition-colors hover:text-primary',
-            pathname === link.href
-              ? 'text-primary'
-              : 'text-muted-foreground'
-          )}
-        >
-          {link.label}
-        </Link>
-      ))}
+    <nav className={cn('flex items-center gap-1', className)}>
+      {links.map((link) => {
+        const isActive = pathname === link.href;
+
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              'inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors',
+              isActive
+                ? 'bg-primary/10 text-primary'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
+            )}
+          >
+            {link.label}
+          </Link>
+        );
+      })}
     </nav>
   );
-} 
+}

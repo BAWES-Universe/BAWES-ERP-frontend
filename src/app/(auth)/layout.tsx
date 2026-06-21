@@ -16,17 +16,19 @@ interface AuthLayoutProps {
 /**
  * Layout component for authenticated routes
  * Provides authentication protection and consistent layout structure
- * 
+ *
  * Features:
  * - Authentication guard to protect routes
  * - Consistent header navigation
+ * - Desktop sidebar navigation (hidden on mobile)
+ * - Mobile bottom tab bar with padding compensation
  * - Responsive container with padding
  * - Full height layout with flexbox
  * - Debug panel in development mode
- * 
+ *
  * @param {AuthLayoutProps} props - Component props
  * @returns {JSX.Element} Authenticated layout structure
- * 
+ *
  * @example
  * ```tsx
  * // Pages wrapped with this layout will be protected
@@ -43,11 +45,13 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
     <AuthGuard>
       <div className="min-h-screen flex flex-col">
         <Header />
-        <main className="flex-1 container mx-auto py-6 px-4">
-          {children}
+        <main className="flex-1 lg:pl-60 pb-16 lg:pb-0">
+          <div className="container mx-auto py-6 px-4">
+            {children}
+          </div>
         </main>
         {DEBUG_CONFIG.isEnabled && <DebugPanel />}
       </div>
     </AuthGuard>
   );
-} 
+}

@@ -49,7 +49,21 @@ export default {
   				'3': 'hsl(var(--chart-3))',
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
-  			}
+  			},
+        /** Zendesk Coral + Slack design tokens */
+        coral: {
+          DEFAULT: '#eb6651',
+          hover: '#d45441',
+          light: '#fef1ef',
+        },
+        slack: {
+          sidebar: '#f4f2ef',
+          surface: '#ffffff',
+          'text-primary': '#1d1c1a',
+          'text-secondary': '#6e6b66',
+          'text-muted': '#a09d98',
+          border: '#e8e6e3',
+        }
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
